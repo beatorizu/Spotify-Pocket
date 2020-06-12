@@ -33,7 +33,7 @@ const AuthorizeRoute = () => {
   }, [isLogged])
 
   if (redirect) {
-    return (<Redirect />);
+    return (<Redirect to={{pathname: '/dashboard'}} />);
   }
 
   return (<Authorize />);
