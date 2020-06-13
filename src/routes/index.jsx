@@ -1,8 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import { PrivateRoute } from "../containers";
+
 import LoginRoute from './LoginRoute'
 import AuthorizeRoute from './AuthorizeRoute'
+import DashboardRoute from './DashboardRoute'
 
 const Routes = () => (
   <Switch>
@@ -12,6 +15,7 @@ const Routes = () => (
     <Route exact path="/authorize">
       <AuthorizeRoute />
     </Route>
+    <PrivateRoute comp={DashboardRoute} />
   </Switch>
 );
 
