@@ -12,7 +12,7 @@ import './App.scss';
 const App = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <div className="app">
+      <div className="app" data-testid="app">
         <BrowserRouter>
           <Routes />
         </BrowserRouter>
