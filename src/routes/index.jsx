@@ -15,7 +15,7 @@ const Routes = () => (
     <Route exact path="/authorize">
       <AuthorizeRoute />
     </Route>
-    <PrivateRoute comp={DashboardRoute} />
+    <PrivateRoute path="/dashboard" comp={DashboardRoute} />
   </Switch>
 );
 
