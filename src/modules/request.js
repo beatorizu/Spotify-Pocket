@@ -13,4 +13,7 @@ export const request = async (url, options = {}) => {
   return await fetch(url, options).then(handleErrors);
 }
 
-export const sanitizeUrl = (url, categoryId) => {}
+export const sanitizeUrl = (rawUrl, urlKey) => {
+  const property = Object.keys(urlKey)[0];
+  return rawUrl.replace(`{${property}}`, urlKey[property]);
+}
