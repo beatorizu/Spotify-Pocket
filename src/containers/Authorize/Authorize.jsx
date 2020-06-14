@@ -8,7 +8,7 @@ import './Authorize.scss';
 
 const Authorize = () => {
   return (
-    <div className="callback" style={{backgroundImage: `url(${backgroundImage})`}}>
+    <div className="callback" style={{backgroundImage: `url(${backgroundImage})`}} data-testid="callback">
       <div className="container">
         <Loading text='Autenticando...' />
       </div>
