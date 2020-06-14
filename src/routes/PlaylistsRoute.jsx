@@ -30,10 +30,27 @@ const PlaylistsRoute = ({ path }) => {
 
     dispatch(getCategoryPlaylistRequest());
 
+    request(sanitizeUrl(getCategoryPlaylists.url, { categoryId }), requestOptions)
+      .then(data => dispatch(getCategoryPlaylistSuccess(data)))
+      .catch(error => {
+        if (error === 401) {
+          dispatch(logout());
+
+          return;
+        }
+
+        dispatch(getCategoryPlaylistFailed(error));
+      });
   }, [auth, categoryId, dispatch])
 
   return (
-    <Playlists isLoading={content.status === 'running' && content.playlists.length === 0} />
+    <Playlists
+      categoryId={categoryId}
+      categoryName={getContentNameById(categoryId, content.categories)}
+      data={content.playlists}
+      isLoading={content.status === 'running' && content.playlists.length === 0}
+      path={path}
+    />
   )
 }
 

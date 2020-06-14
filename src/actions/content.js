@@ -11,10 +11,15 @@ export const getCategoriesSuccess = ({ categories }) => ({
   payload: categories.items
 });
 
-export const getCategoryPlaylistFailed = () => ({})
+export const getCategoryPlaylistFailed = () => ({
+  type: ContentConstants.GET_CATEGORY_PLAYLIST_FAILED
+})
 
 export const getCategoryPlaylistRequest = () => ({
   type: ContentConstants.GET_CATEGORY_PLAYLIST_REQUEST
 })
 
-export const getCategoryPlaylistSuccess = () => ({})
+export const getCategoryPlaylistSuccess = ({ playlists }) => ({
+  type: ContentConstants.GET_CATEGORY_PLAYLIST_SUCCESS,
+  payload: playlists.items
+})

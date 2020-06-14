@@ -34,6 +34,13 @@ const contentReducer = (state = contentInitialState, action) => {
         playlists: [],
         status: 'running'
       };
+    case ContentConstants.GET_CATEGORY_PLAYLIST_SUCCESS:
+      return {
+        ...state,
+        errorMessage: '',
+        playlists: payload,
+        status: 'success'
+      };
 
     default:
       return state

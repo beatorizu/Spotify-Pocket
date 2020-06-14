@@ -8,12 +8,14 @@ import PlaylistItem from "./PlaylistItem";
 import './Playlists.scss';
 
 const Playlists = ({ data, categoryName, categoryId, isLoading, path }) => (
-  <div className="playlists">
+  <div className="playlists" data-testid="playlists">
     <div className="container">
-      <h3 className="playlists__title">Categorias</h3>
+      <h3 className="playlists__title">{categoryName}</h3>
       {isLoading
         ? <Loading text="Carregando..." />
-        : <div className="playlists__content"></div>
+        : <div className="playlists__content">
+          {data?.map(playlist => <PlaylistItem categoryId={categoryId} description={playlist.description} id={playlist.id} image={playlist.images[0]} name={playlist.name} path={path} key={playlist.id} />)}
+        </div>
       }
     </div>
   </div>
