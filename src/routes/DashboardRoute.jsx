@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch, useRouteMatch } from "react-router-dom";
 
 import {
+  getCategoriesRequest,
   getUserFailed,
   getUserRequest,
   getUserSuccess,
@@ -11,13 +12,13 @@ import {
 import { endpoints } from "../modules/endpoints";
 import { request } from "../modules/request";
 
-import { Dashboard, PrivateRoute, Topbar } from "../containers";
+import { Categories, Dashboard, PrivateRoute, Topbar } from "../containers";
 import { WelcomeBox } from "../components";
 
-const { getUserProfile } = endpoints;
+const { getCategories, getUserProfile } = endpoints;
 
 const DashboardRoute = () => {
-  const { auth, user } = useSelector(state => state);
+  const { auth, content, user } = useSelector(state => state);
   const { path, url } = useRouteMatch();
   const dispatch = useDispatch();
 
@@ -42,12 +43,23 @@ const DashboardRoute = () => {
       })
   }, [auth, dispatch]);
 
+  useEffect(() => {
+    const requestOptions = {
+      ...getCategories.options,
+      headers: { 'Authorization': `Bearer ${auth.accessToken}` }
+    }
+
+    dispatch(getCategoriesRequest());
+  }, [auth, dispatch]);
+
   return (
     <Dashboard>
       <Topbar />
       <Switch>
         <PrivateRoute exact path={path}>
           <WelcomeBox name={user.name} />
+
+          <Categories isLoading={content.status === 'running' && content.categories.length === 0} url={url} data={content.categories} />
         </PrivateRoute>
       </Switch>
     </Dashboard>

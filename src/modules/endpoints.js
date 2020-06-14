@@ -15,5 +15,9 @@ export const endpoints = {
   getUserProfile: {
     url: `${spotify.webAPI}/me`,
     options: defaultOptions
+  },
+  getCategories: {
+    url: `${spotify.webAPI}/browse/categories?country=BR&locale=pt_BR`,
+    options: defaultOptions
   }
 }
