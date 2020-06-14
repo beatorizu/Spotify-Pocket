@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Switch, useRouteMatch } from "react-router-dom";
 
 import {
   getUserFailed,
@@ -10,13 +11,14 @@ import {
 import { endpoints } from "../modules/endpoints";
 import { request } from "../modules/request";
 
-import { Dashboard, Topbar } from "../containers";
+import { Dashboard, PrivateRoute, Topbar } from "../containers";
 import { WelcomeBox } from "../components";
 
 const { getUserProfile } = endpoints;
 
 const DashboardRoute = () => {
   const { auth, user } = useSelector(state => state);
+  const { path, url } = useRouteMatch();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,7 +45,11 @@ const DashboardRoute = () => {
   return (
     <Dashboard>
       <Topbar />
-      <WelcomeBox name={user.name} />
+      <Switch>
+        <PrivateRoute exact path={path}>
+          <WelcomeBox name={user.name} />
+        </PrivateRoute>
+      </Switch>
     </Dashboard>
   );
 }
