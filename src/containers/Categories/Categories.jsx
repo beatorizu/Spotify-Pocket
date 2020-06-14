@@ -13,11 +13,23 @@ const Categories = ({ data, isLoading, url }) => (
       <h3 className="categories__title">Categorias</h3>
       {isLoading
         ?<Loading text="Carregando..." />
-        : <div>Batata</div>
+        : <div className="categories__content">
+          {data?.map(category => <CategoryItem icon={category.icons[0]} id={category.id} name={category.name} url={url} key={category.id} />)}
+        </div>
       }
     </div>
   </div>
 );
+
+CategoryItem.defaultProps = {
+  isLoading: false
+}
+
+CategoryItem.propTypes = {
+  data: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
+  url: PropTypes.string.isRequired,
+}
 
 export default Categories;
 

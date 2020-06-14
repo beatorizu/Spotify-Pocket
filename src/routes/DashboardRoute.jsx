@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch, useRouteMatch } from "react-router-dom";
 
 import {
+  getCategoriesFailed,
   getCategoriesRequest,
+  getCategoriesSuccess,
   getUserFailed,
   getUserRequest,
   getUserSuccess,
@@ -50,6 +52,18 @@ const DashboardRoute = () => {
     }
 
     dispatch(getCategoriesRequest());
+
+    request(getCategories.url, requestOptions)
+      .then(data => dispatch(getCategoriesSuccess(data)))
+      .catch(error => {
+        if (error === 401) {
+          dispatch(logout);
+
+          return;
+        }
+
+        dispatch(getCategoriesFailed(error));
+      })
   }, [auth, dispatch]);
 
   return (

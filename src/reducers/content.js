@@ -21,6 +21,13 @@ const contentReducer = (state = contentInitialState, action) => {
         categories: [],
         status: 'running'
       };
+    case ContentConstants.GET_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        errorMessage: '',
+        categories: payload,
+        status: 'success'
+      };
 
     default:
       return state
