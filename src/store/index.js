@@ -2,7 +2,7 @@ import { createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { UserConstants } from "../constants/user";
+import UserConstants from "../constants/user";
 
 import appReducers from "../reducers";
 

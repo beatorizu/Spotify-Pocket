@@ -10,6 +10,10 @@ const defaultOptions ={
 
 export const endpoints = {
   getAthorizarion: {
-    url: `${spotify.authorizationURL}?response_type=code&client_id=${spotify.clientId}${spotify.scopes ? '&scope=' + encodeURIComponent(spotify.scopes): ''}&redirect_uri=${spotify.redirectUrl}`
+    url: `${spotify.authorizationURL}?client_id=${spotify.clientId}${spotify.scopes ? '&scope=' + encodeURIComponent(spotify.scopes) : ''}&redirect_uri=${spotify.redirectUrl}&response_type=token&show_dialog=true`
+  },
+  getUserProfile: {
+    url: `${spotify.webAPI}/me`,
+    options: defaultOptions
   }
 }
