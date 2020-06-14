@@ -12,3 +12,5 @@ export const request = async (url, options = {}) => {
   }
   return await fetch(url, options).then(handleErrors);
 }
+
+export const sanitizeUrl = (url, categoryId) => {}

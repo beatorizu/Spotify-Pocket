@@ -17,6 +17,8 @@ import { request } from "../modules/request";
 import { Categories, Dashboard, PrivateRoute, Topbar } from "../containers";
 import { WelcomeBox } from "../components";
 
+import PlaylistsRoute from "./PlaylistsRoute";
+
 const { getCategories, getUserProfile } = endpoints;
 
 const DashboardRoute = () => {
@@ -74,6 +76,9 @@ const DashboardRoute = () => {
           <WelcomeBox name={user.name} />
 
           <Categories isLoading={content.status === 'running' && content.categories.length === 0} url={url} data={content.categories} />
+        </PrivateRoute>
+        <PrivateRoute exact path={`${path}/:categoryId`}>
+          <PlaylistsRoute path={path} />
         </PrivateRoute>
       </Switch>
     </Dashboard>
