@@ -19,5 +19,9 @@ export const endpoints = {
   getCategories: {
     url: `${spotify.webAPI}/browse/categories?country=BR&locale=pt_BR`,
     options: defaultOptions
+  },
+  getCategoryPlaylists: {
+    url: `${spotify.webAPI}/browse/categories/{categoryId}/playlists`,
+    options: defaultOptions
   }
 }
