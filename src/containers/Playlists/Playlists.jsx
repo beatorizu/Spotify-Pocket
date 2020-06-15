@@ -1,7 +1,7 @@
 import React  from 'react';
 import PropTypes from "prop-types";
 
-import { Loading } from "../../components";
+import { Loading, RouteHeader } from "../../components";
 
 import PlaylistItem from "./PlaylistItem";
 
@@ -10,7 +10,7 @@ import './Playlists.scss';
 const Playlists = ({ data, categoryName, categoryId, isLoading, path }) => (
   <div className="playlists" data-testid="playlists">
     <div className="container">
-      <h3 className="playlists__title">{categoryName}</h3>
+      <RouteHeader categoryName={categoryName} path={path} />
       {isLoading
         ? <Loading text="Carregando..." />
         : <div className="playlists__content">
