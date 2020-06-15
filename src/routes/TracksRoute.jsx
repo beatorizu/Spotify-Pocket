@@ -9,6 +9,7 @@ import {
 import { Tracks } from "../containers";
 
 import { endpoints } from "../modules/endpoints";
+import { getContentNameById } from "../modules/helpers";
 
 const { getPlaylistTracks } = endpoints;
 
@@ -27,7 +28,9 @@ const TracksRoute = ({ path }) => {
 
   return (
     <Tracks
+      categoryName={getContentNameById(playlistId, content.playlists)}
       isLoading={content.status === 'running' && content.tracks.length === 0}
+      path={path}
     />
   )
 }
