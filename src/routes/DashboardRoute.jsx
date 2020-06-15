@@ -82,7 +82,7 @@ const DashboardRoute = () => {
           <PlaylistsRoute path={path} />
         </PrivateRoute>
         <PrivateRoute exact path={`${path}/:categoryId/:playlistId`}>
-          <TracksRoute path={path} />
+          <TracksRoute />
         </PrivateRoute>
       </Switch>
     </Dashboard>
