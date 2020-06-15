@@ -18,6 +18,7 @@ import { Categories, Dashboard, PrivateRoute, Topbar } from "../containers";
 import { WelcomeBox } from "../components";
 
 import PlaylistsRoute from "./PlaylistsRoute";
+import TracksRoute from "./TracksRoute";
 
 const { getCategories, getUserProfile } = endpoints;
 
@@ -79,6 +80,9 @@ const DashboardRoute = () => {
         </PrivateRoute>
         <PrivateRoute exact path={`${path}/:categoryId`}>
           <PlaylistsRoute path={path} />
+        </PrivateRoute>
+        <PrivateRoute exact path={`${path}/:categoryId/:playlistId`}>
+          <TracksRoute path={path} />
         </PrivateRoute>
       </Switch>
     </Dashboard>
