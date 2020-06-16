@@ -47,6 +47,20 @@ const contentReducer = (state = contentInitialState, action) => {
         tracks: [],
         status: 'running'
       };
+    case ContentConstants.GET_PLAYLIST_TRACKS_SUCCESS:
+      return {
+        ...state,
+        errorMessage: '',
+        tracks: payload,
+        status: 'success'
+      };
+    case ContentConstants.GET_PLAYLIST_TRACKS_FAILED:
+      return {
+        ...state,
+        tracks: [],
+        errorMessage: payload.message,
+        status: 'error'
+      };
 
     default:
       return state
