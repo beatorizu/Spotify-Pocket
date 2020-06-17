@@ -37,3 +37,12 @@ export const getPlaylistTracksSuccess = ({ items }) => ({
   type: ContentConstants.GET_PLAYLIST_TRACKS_SUCCESS,
   payload: items
 })
+
+export const removeTrackFromPlayer = () => ({
+  type: ContentConstants.REMOVE_PLAYER_TRACK
+})
+
+export const addTrackToPlayer = (track) => ({
+  type: ContentConstants.ADD_PLAYER_TRACK,
+  payload: track
+})

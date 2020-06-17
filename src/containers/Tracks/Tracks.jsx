@@ -1,5 +1,5 @@
 import React  from 'react';
-
+import PropTypes from 'prop-types';
 import './Tracks.scss';
 import { Loading, RouteHeader } from '../../components';
 import Track from './Track';
@@ -20,6 +20,12 @@ const Tracks = ({ categoryName, data, isLoading, path }) => (
 
 Tracks.defaulProps = {
   isLoading: false
+}
+
+Tracks.propTypes = {
+  categoryName: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
 }
 
 export default Tracks;

@@ -61,6 +61,19 @@ const contentReducer = (state = contentInitialState, action) => {
         errorMessage: payload.message,
         status: 'error'
       };
+    case ContentConstants.ADD_PLAYER_TRACK:
+      return {
+        ...state,
+        playingNowId: payload.id,
+        playingNowTrack: payload
+      }
+    case ContentConstants.REMOVE_PLAYER_TRACK:
+      return {
+        ...state,
+        playingNowId: null,
+        playingNowTrack: null,
+        playerHeight: 0
+      }
 
     default:
       return state
