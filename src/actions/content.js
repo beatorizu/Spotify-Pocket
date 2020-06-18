@@ -46,3 +46,8 @@ export const addTrackToPlayer = (track) => ({
   type: ContentConstants.ADD_PLAYER_TRACK,
   payload: track
 })
+
+export const setPlayerHeight = (height) => ({
+  type: ContentConstants.SET_PLAYER_HEIGHT,
+  payload: height
+})

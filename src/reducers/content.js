@@ -74,6 +74,11 @@ const contentReducer = (state = contentInitialState, action) => {
         playingNowTrack: null,
         playerHeight: 0
       }
+    case ContentConstants.SET_PLAYER_HEIGHT:
+      return {
+        ...state,
+        playerHeight: payload
+      }
 
     default:
       return state
