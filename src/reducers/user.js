@@ -23,6 +23,12 @@ const userReducer = (state = userInitialState, action) => {
         ...payload,
         status: 'success'
       };
+    case UserConstants.GET_USER_FAILED:
+      return {
+        ...state,
+        errorMessage: payload.message,
+        status: 'error'
+      };
 
     default:
       return state
